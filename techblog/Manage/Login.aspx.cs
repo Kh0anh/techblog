@@ -19,29 +19,29 @@ namespace techblog.Manage
             string username = UserName.Text;
             string password = Password.Text;
 
-            using (DBDataContext db = new DBDataContext())
-            {
-                var user = db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
+            //using (DBDataContext db = new DBDataContext())
+            //{
+            //    var user = db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
 
-                if (user != null)
-                {
-                    // User found, set authentication cookie
-                    FormsAuthentication.SetAuthCookie(username, false);
+            //    if (user != null)
+            //    {
+            //        // User found, set authentication cookie
+            //        FormsAuthentication.SetAuthCookie(username, false);
 
-                    // Optionally, store user information in the session
-                    Session["UserID"] = user.ID;
-                    Session["UserName"] = user.UserName;
-                    Session["FullName"] = user.FullName;
+            //        // Optionally, store user information in the session
+            //        Session["UserID"] = user.ID;
+            //        Session["UserName"] = user.UserName;
+            //        Session["FullName"] = user.FullName;
 
-                    // Redirect to the protected page
-                    Response.Redirect("Post.aspx");
-                }
-                else
-                {
-                    lblMessage.Text = "Tài khoản hoặc mật khẩu sai.";
-                }
-                Response.Redirect("Post.aspx");
-            }
+            //        // Redirect to the protected page
+            //        Response.Redirect("Post.aspx");
+            //    }
+            //    else
+            //    {
+            //        lblMessage.Text = "Tài khoản hoặc mật khẩu sai.";
+            //    }
+            //    Response.Redirect("Post.aspx");
+            //}
         }
     }
 }
