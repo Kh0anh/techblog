@@ -26,7 +26,6 @@
         }--%>
         </div>
 
-        @Html.Partial("Partials/Sidebar")
-
+        <%-- @Html.Partial("Partials/Sidebar")--%>
     </div>
 </asp:Content>
