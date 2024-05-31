@@ -48,7 +48,7 @@ namespace techblog
     #endregion
 		
 		public DBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -364,8 +364,6 @@ namespace techblog
 		
 		private string _Name;
 		
-		private string _Slug;
-		
 		private System.DateTime _CreatedAt;
 		
 		private EntitySet<Category> _Categories;
@@ -384,8 +382,6 @@ namespace techblog
     partial void OnParentIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnSlugChanging(string value);
-    partial void OnSlugChanged();
     partial void OnCreatedAtChanging(System.DateTime value);
     partial void OnCreatedAtChanged();
     #endregion
@@ -458,26 +454,6 @@ namespace techblog
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Slug", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string Slug
-		{
-			get
-			{
-				return this._Slug;
-			}
-			set
-			{
-				if ((this._Slug != value))
-				{
-					this.OnSlugChanging(value);
-					this.SendPropertyChanging();
-					this._Slug = value;
-					this.SendPropertyChanged("Slug");
-					this.OnSlugChanged();
 				}
 			}
 		}
@@ -787,8 +763,6 @@ namespace techblog
 		
 		private string _Title;
 		
-		private string _Slug;
-		
 		private string _Content;
 		
 		private byte _Type;
@@ -815,8 +789,6 @@ namespace techblog
     partial void OnAuthorIDChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
-    partial void OnSlugChanging(string value);
-    partial void OnSlugChanged();
     partial void OnContentChanging(string value);
     partial void OnContentChanged();
     partial void OnTypeChanging(byte value);
@@ -898,26 +870,6 @@ namespace techblog
 					this._Title = value;
 					this.SendPropertyChanged("Title");
 					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Slug", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string Slug
-		{
-			get
-			{
-				return this._Slug;
-			}
-			set
-			{
-				if ((this._Slug != value))
-				{
-					this.OnSlugChanging(value);
-					this.SendPropertyChanging();
-					this._Slug = value;
-					this.SendPropertyChanged("Slug");
-					this.OnSlugChanged();
 				}
 			}
 		}

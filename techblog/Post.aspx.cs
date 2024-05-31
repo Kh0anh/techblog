@@ -8,7 +8,7 @@ using techblog.ViewModels;
 
 namespace techblog
 {
-    public partial class _Default : Page
+    public partial class _Post : Page
     {
         public EntryViewModel Entry { get; set; }
         protected void Page_Load(object sender, EventArgs e)

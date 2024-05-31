@@ -10,6 +10,6 @@
 namespace techblog {
     
     
-    public partial class _Default {
+    public partial class _Post {
     }
 }

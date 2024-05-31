@@ -1,7 +1,9 @@
-﻿<%@ Page Title="Trang chủ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Post.aspx.cs" Inherits="techblog._Default" %>
+﻿<%@ Page Title="Trang chủ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Post.aspx.cs" Inherits="techblog._Post" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div class="row">
+        <% if (Entry != null)
+           { %>
         <div class="col-lg-8">
             <h1 class="mt-4"><%:Entry.Title %></h1>
             <p class="lead">bởi <a class="badge badge-pill bg-primary text-white" href="Search.aspx?Author=<%:Entry.Author.ID%>"><%:Entry.Author.Author %></a></p>
@@ -24,8 +26,12 @@
         {
             @Html.Raw(ViewData["CommentSystemCode"])
         }--%>
+            <%}
+           else
+           {%>
+            <h1 class="mt-4">404</h1>
+            <%} %>
         </div>
-
         <%-- @Html.Partial("Partials/Sidebar")--%>
     </div>
 </asp:Content>

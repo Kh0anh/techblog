@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head runat="server" lang="vi">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title><%: Page.Title %> - TechBlog</title>
@@ -21,23 +21,12 @@
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- Navbar Search -->
-        <form method="get" action="/search" class="d-none d-md-inline-block form-inline ml-auto mr-md-3" target="_blank">
-            <div class="input-group">
-                <input type="text" id="q" name="q" class="form-control" placeholder="Search for...">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-
-        <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item">
                 <a class="nav-link" href="/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<%--@Url.Action("Index", "Logout")--%>"><i class="fas fa-sign-out-alt"></i></a>
+                <a class="nav-link" href="/Admin/Login/Default.aspx?logout=1"><i class="fas fa-sign-out-alt"></i></a>
             </li>
         </ul>
 
@@ -50,37 +39,25 @@
             <li class="nav-item <%--@if (ViewBag.Overview != null) {<text>active</text>}--%>">
                 <a class="nav-link" href="/Admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span>Trung tâm</span>
                 </a>
             </li>
             <li class="nav-item <%--@if (ViewBag.Posts != null) {<text>active</text>}--%>">
                 <a class="nav-link" href="/Admin/Posts">
                     <i class="fas fa-fw fa-file"></i>
-                    <span>Posts</span>
-                </a>
-            </li>
-            <li class="nav-item <%--@if (ViewBag.Pages != null) {<text>active</text>}--%>">
-                <a class="nav-link" href="/Admin/Pages">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Pages</span>
+                    <span>Bài đăng</span>
                 </a>
             </li>
             <li class="nav-item <%--@if (ViewBag.Categories != null) {<text>active</text>}--%>">
                 <a class="nav-link" href="/Admin/Categories">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Category</span>
+                    <span>Danh mục</span>
                 </a>
             </li>
             <li class="nav-item<%-- @if (ViewBag.Authors != null) {<text>active</text>}--%>">
                 <a class="nav-link" href="/Admin/Authors">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Authors</span>
-                </a>
-            </li>
-            <li class="nav-item <%--@if (ViewBag.Options != null) {<text>active</text>}--%>">
-                <a class="nav-link" href="/Admin/Options">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Options</span>
+                    <span>Tác giả</span>
                 </a>
             </li>
         </ul>
@@ -91,7 +68,7 @@
                     <li class="breadcrumb-item active"><%--@ViewBag.PageTitle--%></li>
                 </ol>
 
-                <%--@RenderBody()--%>
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
             </div>
 
             <footer class="sticky-footer">
@@ -109,8 +86,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <%--@RenderSection("Scripts", required: false)
-    @Scripts.Render("~/bundles/admin")--%>
+    <script src="<%= ResolveUrl("~/bundles/admin") %>"></script>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/admin") %>
     </asp:PlaceHolder>
