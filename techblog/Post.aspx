@@ -1,37 +1,38 @@
 ﻿<%@ Page Title="Trang chủ" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Post.aspx.cs" Inherits="techblog._Post" %>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
-        <% if (Entry != null)
-           { %>
         <div class="col-lg-8">
-            <h1 class="mt-4"><%:Entry.Title %></h1>
-            <p class="lead">bởi <a class="badge badge-pill bg-primary text-white" href="Search.aspx?Author=<%:Entry.Author.ID%>"><%:Entry.Author.Author %></a></p>
+            <h1 class="mt-4"><%= PostData.Title %></h1>
+            <p class="lead">đăng bởi <span class="badge badge-pill bg-primary text-white">
+                <asp:HyperLink ID="AuthorLink" runat="server" CssClass="text-white"><%:PostData.Author.Author %></asp:HyperLink>
+            </span></p>
 
             <hr>
+
             <p>
-                <% foreach (var category in Entry.Categories)
-                   { %>
-                <a class="badge badge-pill bg-secondary" href="Search.aspx?category=<%:category.ID%>"><%:category.CategoryName%></a>
-                <% } %>
-            Đăng vào <%:Entry.DateTime.ToLongDateString() %> lúc <%:Entry.DateTime.ToShortTimeString() %>
+                <asp:Repeater ID="CategoriesRepeater" runat="server">
+                    <ItemTemplate>
+                        <span class="badge badge-pill bg-secondary">
+                            <asp:HyperLink ID="CategoryLink" runat="server" CssClass="text-white"></asp:HyperLink>
+                        </span>
+                    </ItemTemplate>
+                </asp:Repeater>
+                Đăng ngày <%= PostData.DateTime.ToLongDateString() %> lúc <%= PostData.DateTime.ToShortTimeString() %>
             </p>
 
             <hr>
-            <%:Entry.Content %>
+
+            <div>
+                <%=PostData.Content %>
+            </div>
 
             <hr>
 
-            <%-- @if (Model.CommentStatus)
-        {
-            @Html.Raw(ViewData["CommentSystemCode"])
-        }--%>
-            <%}
-           else
-           {%>
-            <h1 class="mt-4">404</h1>
-            <%} %>
+            <asp:PlaceHolder ID="CommentSystemPlaceholder" runat="server" Visible="false"></asp:PlaceHolder>
+
         </div>
-        <%-- @Html.Partial("Partials/Sidebar")--%>
+
+        <%--<uc:Sidebar ID="Sidebar" runat="server" />--%>
     </div>
 </asp:Content>

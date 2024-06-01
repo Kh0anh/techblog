@@ -58,13 +58,13 @@ namespace techblog.Admin.Posts {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// TitleTextBox control.
+        /// textTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TitleTextBox;
+        protected global::System.Web.UI.WebControls.TextBox textTitle;
         
         /// <summary>
         /// TitleValidator control.
@@ -76,15 +76,6 @@ namespace techblog.Admin.Posts {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator TitleValidator;
         
         /// <summary>
-        /// PostContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PostContent;
-        
-        /// <summary>
         /// ContentTextArea control.
         /// </summary>
         /// <remarks>
@@ -94,13 +85,22 @@ namespace techblog.Admin.Posts {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea ContentTextArea;
         
         /// <summary>
-        /// ContentValidator control.
+        /// CategoriesList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ContentValidator;
+        protected global::System.Web.UI.WebControls.Label CategoriesList;
+        
+        /// <summary>
+        /// CategoryDropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CategoryDropdown;
         
         /// <summary>
         /// StatusLabel control.
@@ -130,12 +130,12 @@ namespace techblog.Admin.Posts {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator StatusValidator;
         
         /// <summary>
-        /// PublishButton control.
+        /// btnPublish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PublishButton;
+        protected global::System.Web.UI.WebControls.Button btnPublish;
     }
 }

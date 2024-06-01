@@ -11,5 +11,32 @@ namespace techblog {
     
     
     public partial class _Post {
+        
+        /// <summary>
+        /// AuthorLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink AuthorLink;
+        
+        /// <summary>
+        /// CategoriesRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater CategoriesRepeater;
+        
+        /// <summary>
+        /// CommentSystemPlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder CommentSystemPlaceholder;
     }
 }

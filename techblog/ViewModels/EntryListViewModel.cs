@@ -9,6 +9,12 @@ namespace techblog.ViewModels
     {
         public List<EntryViewModel> Posts;
         public int CurrentPage { get; set; }
-        public int PageCount { get; set; }
+        public int PageCount
+        {
+            get
+            {
+                return Posts.Count;
+            }
+        }
     }
 }

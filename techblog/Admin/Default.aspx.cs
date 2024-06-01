@@ -94,7 +94,7 @@ namespace techblog.Admin
                                                   DateTime = RecentPosts.CreatedAt,
                                                   Categories = (from c in db.CategoryEntries
                                                                 where c.EntryID == RecentPosts.ID
-                                                                select new CategoryViewModel { ID = c.Category.ID, CategoryName = c.Category.Name }).ToList()
+                                                                select new CategoryViewModel { ID = c.Category.ID, CategoryName = c.Category.CategoryName }).ToList()
                                               }).Take(10)
                               .ToList();
 
@@ -111,7 +111,7 @@ namespace techblog.Admin
                                                       select new CategoryViewModel
                                                       {
                                                           ID = Categorie.ID,
-                                                          CategoryName = Categorie.Name
+                                                          CategoryName = Categorie.CategoryName
                                                       })
                            .ToList();
 

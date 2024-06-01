@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Tạo bài đăng" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="techblog.Admin.Posts.Create" %>
+﻿<%@ Page Title="Tạo bài đăng" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="techblog.Admin.Posts.Create" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet" />
@@ -19,13 +19,12 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <asp:TextBox ID="TitleTextBox" runat="server" CssClass="form-control" placeholder="Tiêu đề"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="TitleValidator" runat="server" ControlToValidate="TitleTextBox" ErrorMessage="Vui lòng điền tiêu đề." CssClass="text-danger" />
+                                            <asp:TextBox ID="textTitle" runat="server" CssClass="form-control" placeholder="Tiêu đề"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="TitleValidator" runat="server" ControlToValidate="textTitle" ErrorMessage="Vui lòng điền tiêu đề." CssClass="text-danger" />
                                         </div>
                                         <div class="form-group">
-                                            <asp:HiddenField ID="PostContent" runat="server" />
+                                            <input type="hidden" name="PostContent" id="PostContent" />
                                             <textarea id="ContentTextArea" class="form-control" runat="server"></textarea>
-                                            <asp:RequiredFieldValidator ID="ContentValidator" runat="server" ControlToValidate="ContentTextArea" ErrorMessage="Content is required." CssClass="text-danger" OnServerValidate="ContentValidator_ServerValidate"/>
                                         </div>
                                     </div>
                                 </div>
@@ -35,17 +34,24 @@
                                 <div class="card">
                                     <div class="card-header">Cài đặt</div>
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <asp:Label ID="StatusLabel" runat="server" Text="Tuỳ chỉnh"></asp:Label>
-                                            <asp:DropDownList ID="StatusDropDownList" runat="server" CssClass="form-control">
-                                                <asp:ListItem Text="Công khai" Value="Published"></asp:ListItem>
-                                                <asp:ListItem Text="Nháp" Value="Draft"></asp:ListItem>
-                                            </asp:DropDownList>
+                                        <div>
+                                            <div class="form-group">
+                                                <asp:Label ID="CategoriesList" runat="server" Text="Danh mục:"></asp:Label>
+                                                <asp:DropDownList ID="CategoryDropdown" runat="server" CssClass="form-control"></asp:DropDownList>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <asp:Label ID="StatusLabel" runat="server" Text="Tuỳ chỉnh"></asp:Label>
+                                                <asp:DropDownList ID="StatusDropDownList" runat="server" CssClass="form-control">
+                                                    <asp:ListItem Text="Công khai" Value="Published"></asp:ListItem>
+                                                    <asp:ListItem Text="Nháp" Value="Draft"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
                                             <asp:RequiredFieldValidator ID="StatusValidator" runat="server" ControlToValidate="StatusDropDownList" InitialValue="" ErrorMessage="Status is required." CssClass="text-danger" />
                                         </div>
                                     </div>
                                     <div class="card-footer text-right">
-                                        <asp:Button ID="PublishButton" runat="server" CssClass="btn btn-primary btn-block" Text="Đăng" />
+                                        <asp:Button ID="btnPublish" runat="server" CssClass="btn btn-primary btn-block" Text="Đăng" OnClick="btnPublish_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -70,12 +76,19 @@
                   ['insert', ['link', 'picture', 'video']],
                   ['view', ['fullscreen', 'codeview', 'help']]
                 ]
-            });</script>
-
-         <%-- var initialContent = '<%= Server.HtmlEncode(ContentHiddenField.Value) %>';
-            $('#<%= ContentTextArea.ClientID %>').summernote({
-                height: 300
             });
-            $('#<%= ContentTextArea.ClientID %>').summernote('code', initialContent);--%>
+
+            <%--$('form1').submit(function () {
+                var content = $('.note-editable').html();
+                $('#<%= PostContent.ClientID %>').val(content);
+            });--%>
+            function htmlEncode(value) {
+                return $('<div/>').text(value).html();
+            }
+            document.getElementById('<%= btnPublish.ClientID %>').addEventListener('click', function () {
+                var content = htmlEncode($('.note-editable').html());
+                document.getElementById('PostContent').value = content;
+            })
+        </script>
     </form>
 </asp:Content>

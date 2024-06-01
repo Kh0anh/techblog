@@ -12,23 +12,12 @@
       <Association Name="Author_Entry" Member="Entries" ThisKey="ID" OtherKey="AuthorID" Type="Entry" />
     </Type>
   </Table>
-  <Table Name="dbo.Category" Member="Categories">
-    <Type Name="Category">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Category_Category" Member="Categories" ThisKey="ID" OtherKey="ParentID" Type="Category" />
-      <Association Name="Category_CategoryEntry" Member="CategoryEntries" ThisKey="ID" OtherKey="CategoryID" Type="CategoryEntry" />
-      <Association Name="Category_Category" Member="Category1" ThisKey="ParentID" OtherKey="ID" Type="Category" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CategoryEntry" Member="CategoryEntries">
     <Type Name="CategoryEntry">
       <Column Name="EntryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Category_CategoryEntry" Member="Category" ThisKey="CategoryID" OtherKey="ID" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Entry_CategoryEntry" Member="Entry" ThisKey="EntryID" OtherKey="ID" Type="Entry" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Category_CategoryEntry" Member="Category" ThisKey="CategoryID" OtherKey="ID" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Entry" Member="Entries">
@@ -37,9 +26,7 @@
       <Column Name="AuthorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="CommentStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Entry_CategoryEntry" Member="CategoryEntries" ThisKey="ID" OtherKey="EntryID" Type="CategoryEntry" />
@@ -52,6 +39,13 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Category" Member="Categories">
+    <Type Name="Category">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="Category_CategoryEntry" Member="CategoryEntries" ThisKey="ID" OtherKey="CategoryID" Type="CategoryEntry" />
     </Type>
   </Table>
 </Database>

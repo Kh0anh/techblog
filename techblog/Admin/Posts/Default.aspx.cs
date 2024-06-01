@@ -59,10 +59,22 @@ namespace techblog.Admin.Posts
                 }
             }
 
-            if (!IsPostBack)
+            if (Request.QueryString["delete"] != null)
             {
-                BindPosts();
+                int id;
+                if (int.TryParse(Request.QueryString["delete"], out id))
+                {
+                    using (var db = new DBDataContext())
+                    {
+                        db.Entries.DeleteOnSubmit(db.Entries.SingleOrDefault(c => c.ID == id));
+                        db.SubmitChanges();
+                        Response.Redirect("#");
+                    }
+                }
+
             }
+
+            BindPosts();
         }
 
         private void BindPosts()
@@ -76,9 +88,10 @@ namespace techblog.Admin.Posts
                                                   ID = RecentPosts.ID,
                                                   Title = RecentPosts.Title,
                                                   DateTime = RecentPosts.CreatedAt,
+                                                  Status = RecentPosts.Status == (byte)1  ? "Công khai" : "Ẩn",
                                                   Categories = (from c in db.CategoryEntries
                                                                 where c.EntryID == RecentPosts.ID
-                                                                select new CategoryViewModel { ID = c.Category.ID, CategoryName = c.Category.Name }).ToList()
+                                                                select new CategoryViewModel { ID = c.Category.ID, CategoryName = c.Category.CategoryName }).ToList()
                                               })
                               .ToList();
 

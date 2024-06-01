@@ -36,19 +36,19 @@ namespace techblog
                                               orderby RecentPosts.CreatedAt descending
                                               select new EntryViewModel
                                               {
+                                                  ID = RecentPosts.ID,
                                                   Title = RecentPosts.Title,
                                                   DateTime = RecentPosts.CreatedAt,
                                                   Content = RecentPosts.Content,
                                                   Author = new AuthorViewModel { ID = RecentPosts.Author.ID, Author = String.Format("{0} {1}", RecentPosts.Author.FirstName, RecentPosts.Author.LastName) },
                                                   Categories = (from c in db.CategoryEntries
                                                                 where c.EntryID == RecentPosts.ID
-                                                                select new CategoryViewModel { ID = c.Category.ID, CategoryName = c.Category.Name }).ToList()
+                                                                select new CategoryViewModel { ID = c.Category.ID, CategoryName = c.Category.CategoryName }).ToList()
                                               })
                            .ToList();
                 EntryList = new EntryListViewModel
                 {
                     Posts = Posts,
-                    PageCount = Posts.Count(),
                     CurrentPage = 0
                 };
             }

@@ -11,7 +11,7 @@ namespace techblog.ViewModels
         public string Title { get; set; }
         public string Content { get; set; }
 
-        public bool CommentStatus { get; set; }
+        public string Status { get; set; }
         public AuthorViewModel Author { get; set; }
         public List<CategoryViewModel> Categories { get; set; }
         public DateTime DateTime { get; set; }

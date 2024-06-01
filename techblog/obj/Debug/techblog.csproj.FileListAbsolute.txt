@@ -31,7 +31,5 @@ D:\techblog\techblog\bin\DotNetOpenAuth.AspNet.xml
 D:\techblog\techblog\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 D:\techblog\techblog\bin\Microsoft.AspNet.FriendlyUrls.xml
 D:\techblog\techblog\obj\Debug\techblog.csprojResolveAssemblyReference.cache
-D:\techblog\techblog\obj\Debug\techblog.Properties.Resources.resources
-D:\techblog\techblog\obj\Debug\techblog.csproj.GenerateResource.Cache
 D:\techblog\techblog\obj\Debug\techblog.dll
 D:\techblog\techblog\obj\Debug\techblog.pdb
