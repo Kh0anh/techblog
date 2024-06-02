@@ -80,12 +80,12 @@ namespace techblog
         }
         private void FindByTitle(string content)
         {
-            EntryList.Posts = EntryList.Posts.Where(e => e.Title.Contains(content)).ToList();
+            EntryList.Posts = EntryList.Posts.Where(e => e.Title.ToLower().Contains(content.ToLower())).ToList();
         }
 
         private void FindByConten(string content)
         {
-            EntryList.Posts = EntryList.Posts.Where(e => e.Title.Contains(content)).ToList();
+            EntryList.Posts = EntryList.Posts.Where(e => e.Title.ToLower().Contains(content.ToLower())).ToList();
         }
     }
 }

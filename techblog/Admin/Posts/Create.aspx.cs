@@ -127,16 +127,14 @@ namespace techblog.Admin.Posts
                 List<Category> cList = (from _Category in db.Categories
                                             select _Category).ToList();
 
-                Random random = new Random();
-                int randomNumber = random.Next(0, cList.Count());
                 int id;
-                //if (int.TryParse(CategoryDropdown.SelectedValue, out id))
-                if (true)
+                if (int.TryParse(CategoryDropdown.SelectedValue, out id))
+                //if (true)
                 {
                     CategoryEntry ce = new CategoryEntry
                     {
                         EntryID = _entry.ID,
-                        CategoryID = cList[randomNumber].ID
+                        CategoryID = id
                     };
 
                     db.CategoryEntries.InsertOnSubmit(ce);
