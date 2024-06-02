@@ -12,29 +12,29 @@ namespace techblog.Admin.Login
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-#if DEBUG
-            string email = "vedakinvn@gmail.com";
-            string password = "123";
-            using (DBDataContext db = new DBDataContext())
-            {
-                var user = db.Authors.FirstOrDefault(u => u.Email == email && u.Password == password);
+//#if DEBUG
+//            string email = "vedakinvn@gmail.com";
+//            string password = "123";
+//            using (DBDataContext db = new DBDataContext())
+//            {
+//                var user = db.Authors.FirstOrDefault(u => u.Email == email && u.Password == password);
 
-                if (user != null)
-                {
-                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, email, DateTime.Now, DateTime.Now.AddMinutes(30), false, user.ID.ToString(), FormsAuthentication.FormsCookiePath);
-                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-                    HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                    Response.Cookies.Add(authCookie);
+//                if (user != null)
+//                {
+//                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, email, DateTime.Now, DateTime.Now.AddMinutes(30), false, user.ID.ToString(), FormsAuthentication.FormsCookiePath);
+//                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+//                    HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+//                    Response.Cookies.Add(authCookie);
 
-                    string returnUrl = Request.QueryString["ReturnUrl"];
-                    if (string.IsNullOrEmpty(returnUrl))
-                    {
-                        returnUrl = "~/Admin";
-                    }
-                    Response.Redirect(returnUrl);
-                }
-            }
-#endif
+//                    string returnUrl = Request.QueryString["ReturnUrl"];
+//                    if (string.IsNullOrEmpty(returnUrl))
+//                    {
+//                        returnUrl = "~/Admin";
+//                    }
+//                    Response.Redirect(returnUrl);
+//                }
+//            }
+//#endif
             if (!IsPostBack)
             {
                 if (Request.QueryString["logout"] != null)
